@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Periódica Interactiva</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+    <header>
+        <div class="header-content">
+            <img src="logon.png" alt="Logo de QuimiTech" class="logo">
+            <div class="header-text">
+                <h1>QuimiTech</h1>
+                <p>Tu recurso definitivo para aprender nomenclatura química</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+    <a href="index.html">Inicio</a>
+    <a href="tutoriales.html">Tutoriales</a>
+    <a href="recursos.html">Recursos</a>
+    <a href="juegos.html">Juegos</a>
+    <a href="quimikids.html">QuimiKids</a>
+    </nav>
+<body>
+        <h1>Tabla Periódica Interactiva</h1>
+
+    <div class="container">
+        <table id="periodic-table">
+            <tr>
+                <td data-symbol="H" data-name="Hidrógeno" data-atomic="1" data-group="1" data-period="1" data-oxidation="+1">H</td>
+                <td data-symbol="He" data-name="Helio" data-atomic="2" data-group="18" data-period="1" data-oxidation="N/A">He</td>
+            </tr>
+            <tr>
+                <td data-symbol="Li" data-name="Litio" data-atomic="3" data-group="1" data-period="2" data-oxidation="+1">Li</td>
+                <td data-symbol="Be" data-name="Berilio" data-atomic="4" data-group="2" data-period="2" data-oxidation="+2">Be</td>
+                <td data-symbol="B" data-name="Boro" data-atomic="5" data-group="13" data-period="2" data-oxidation="+3">B</td>
+                <td data-symbol="C" data-name="Carbono" data-atomic="6" data-group="14" data-period="2" data-oxidation="-4, +2, +4, +6">C</td>
+                <td data-symbol="N" data-name="Nitrógeno" data-atomic="7" data-group="15" data-period="2" data-oxidation="-3, +1, +2, +3, +4, +5">N</td>
+                <td data-symbol="O" data-name="Oxígeno" data-atomic="8" data-group="16" data-period="2" data-oxidation="-2">O</td>
+                <td data-symbol="F" data-name="Flúor" data-atomic="9" data-group="17" data-period="2" data-oxidation="-1">F</td>
+                <td data-symbol="Ne" data-name="Neón" data-atomic="10" data-group="18" data-period="2" data-oxidation="N/A">Ne</td>
+            </tr>
+            <tr>
+                <td data-symbol="Na" data-name="Sodio" data-atomic="11" data-group="1" data-period="3" data-oxidation="+1">Na</td>
+                <td data-symbol="Mg" data-name="Magnesio" data-atomic="12" data-group="2" data-period="3" data-oxidation="+2">Mg</td>
+                <td data-symbol="Al" data-name="Aluminio" data-atomic="13" data-group="13" data-period="3" data-oxidation="+3">Al</td>
+                <td data-symbol="Si" data-name="Silicio" data-atomic="14" data-group="14" data-period="3" data-oxidation="-4, +2, +4">Si</td>
+                <td data-symbol="P" data-name="Fósforo" data-atomic="15" data-group="15" data-period="3" data-oxidation="-3, +3, +5">P</td>
+                <td data-symbol="S" data-name="Azufre" data-atomic="16" data-group="16" data-period="3" data-oxidation="-2, +4, +6">S</td>
+                <td data-symbol="Cl" data-name="Cloro" data-atomic="17" data-group="17" data-period="3" data-oxidation="-1, +1, +3, +5, +7">Cl</td>
+                <td data-symbol="Ar" data-name="Argón" data-atomic="18" data-group="18" data-period="3" data-oxidation="N/A">Ar</td>
+            </tr>
+            <tr>
+                <td data-symbol="K" data-name="Potasio" data-atomic="19" data-group="1" data-period="4" data-oxidation="+1">K</td>
+                <td data-symbol="Ca" data-name="Calcio" data-atomic="20" data-group="2" data-period="4" data-oxidation="+2">Ca</td>
+                <td data-symbol="Sc" data-name="Escandio" data-atomic="21" data-group="3" data-period="4" data-oxidation="+3">Sc</td>
+                <td data-symbol="Ti" data-name="Titanio" data-atomic="22" data-group="4" data-period="4" data-oxidation="+4">Ti</td>
+                <td data-symbol="V" data-name="Vanadio" data-atomic="23" data-group="5" data-period="4" data-oxidation="+2, +3, +4, +5">V</td>
+                <td data-symbol="Cr" data-name="Cromo" data-atomic="24" data-group="6" data-period="4" data-oxidation="+2, +3, +6">Cr</td>
+                <td data-symbol="Mn" data-name="Manganeso" data-atomic="25" data-group="7" data-period="4" data-oxidation="+2, +3, +4, +6, +7">Mn</td>
+                <td data-symbol="Fe" data-name="Hierro" data-atomic="26" data-group="8" data-period="4" data-oxidation="+2, +3">Fe</td>
+                <td data-symbol="Co" data-name="Cobalto" data-atomic="27" data-group="9" data-period="4" data-oxidation="+2, +3">Co</td>
+                <td data-symbol="Ni" data-name="Níquel" data-atomic="28" data-group="10" data-period="4" data-oxidation="+2, +3">Ni</td>
+                <td data-symbol="Cu" data-name="Cobre" data-atomic="29" data-group="11" data-period="4" data-oxidation="+1, +2">Cu</td>
+                <td data-symbol="Zn" data-name="Zinc" data-atomic="30" data-group="12" data-period="4" data-oxidation="+2">Zn</td>
+                <td data-symbol="Ga" data-name="Galio" data-atomic="31" data-group="13" data-period="4" data-oxidation="+3">Ga</td>
+                <td data-symbol="Ge" data-name="Germanio" data-atomic="32" data-group="14" data-period="4" data-oxidation="-4, +2, +4">Ge</td>
+                <td data-symbol="As" data-name="Arsénico" data-atomic="33" data-group="15" data-period="4" data-oxidation="-3, +3, +5">As</td>
+                <td data-symbol="Se" data-name="Selenio" data-atomic="34" data-group="16" data-period="4" data-oxidation="-2, +4, +6">Se</td>
+                <td data-symbol="Br" data-name="Bromo" data-atomic="35" data-group="17" data-period="4" data-oxidation="-1">Br</td>
+                <td data-symbol="Kr" data-name="Kriptón" data-atomic="36" data-group="18" data-period="4" data-oxidation="N/A">Kr</td>
+            </tr>
+            <tr>
+                <td data-symbol="Rb" data-name="Rubidio" data-atomic="37" data-group="1" data-period="5" data-oxidation="+1">Rb</td>
+                <td data-symbol="Sr" data-name="Estroncio" data-atomic="38" data-group="2" data-period="5" data-oxidation="+2">Sr</td>
+                <td data-symbol="Y" data-name="Itrio" data-atomic="39" data-group="3" data-period="5" data-oxidation="+3">Y</td>
+                <td data-symbol="Zr" data-name="Circonio" data-atomic="40" data-group="4" data-period="5" data-oxidation="+4">Zr</td>
+                <td data-symbol="Nb" data-name="Niobio" data-atomic="41" data-group="5" data-period="5" data-oxidation="+3, +5">Nb</td>
+                <td data-symbol="Mo" data-name="Molibdeno" data-atomic="42" data-group="6" data-period="5" data-oxidation="+2, +3, +4, +5, +6">Mo</td>
+                <td data-symbol="Tc" data-name="Tecnecio" data-atomic="43" data-group="7" data-period="5" data-oxidation="+4, +7">Tc</td>
+                <td data-symbol="Ru" data-name="Rutenio" data-atomic="44" data-group="8" data-period="5" data-oxidation="+2, +3, +4, +6">Ru</td>
+                <td data-symbol="Rh" data-name="Rodio" data-atomic="45" data-group="9" data-period="5" data-oxidation="+1, +2, +3, +4">Rh</td>
+                <td data-symbol="Pd" data-name="Paladio" data-atomic="46" data-group="10" data-period="5" data-oxidation="+2, +4">Pd</td>
+                <td data-symbol="Ag" data-name="Plata" data-atomic="47" data-group="11" data-period="5" data-oxidation="+1, +2">Ag</td>
+                <td data-symbol="Cd" data-name="Cadmio" data-atomic="48" data-group="12" data-period="5" data-oxidation="+2">Cd</td>
+                <td data-symbol="In" data-name="Indio" data-atomic="49" data-group="13" data-period="5" data-oxidation="+1, +3">In</td>
+                <td data-symbol="Sn" data-name="Estaño" data-atomic="50" data-group="14" data-period="5" data-oxidation="-4, +2, +4">Sn</td>
+                <td data-symbol="Sb" data-name="Antimonio" data-atomic="51" data-group="15" data-period="5" data-oxidation="-3, +3, +5">Sb</td>
+                <td data-symbol="Te" data-name="Telurio" data-atomic="52" data-group="16" data-period="5" data-oxidation="-2, +4, +6">Te</td>
+                <td data-symbol="I" data-name="Yodo" data-atomic="53" data-group="17" data-period="5" data-oxidation="-1, +1, +3, +5, +7">I</td>
+                <td data-symbol="Xe" data-name="Xenón" data-atomic="54" data-group="18" data-period="5" data-oxidation="N/A">Xe</td>
+            </tr>
+            <tr>
+                <td data-symbol="Cs" data-name="Cesio" data-atomic="55" data-group="1" data-period="6" data-oxidation="+1">Cs</td>
+                <td data-symbol="Ba" data-name="Bario" data-atomic="56" data-group="2" data-period="6" data-oxidation="+2">Ba</td>
+                <td data-symbol="La" data-name="Lantano" data-atomic="57" data-group="3" data-period="6" data-oxidation="+3">La</td>
+                <td data-symbol="Ce" data-name="Cerio" data-atomic="58" data-group="3" data-period="6" data-oxidation="+3, +4">Ce</td>
+                <td data-symbol="Pr" data-name="Praseodimio" data-atomic="59" data-group="3" data-period="6" data-oxidation="+3">Pr</td>
+                <td data-symbol="Nd" data-name="Neodimio" data-atomic="60" data-group="3" data-period="6" data-oxidation="+3">Nd</td>
+                <td data-symbol="Pm" data-name="Prometio" data-atomic="61" data-group="3" data-period="6" data-oxidation="+3">Pm</td>
+                <td data-symbol="Sm" data-name="Samario" data-atomic="62" data-group="3" data-period="6" data-oxidation="+2, +3">Sm</td>
+                <td data-symbol="Eu" data-name="Europio" data-atomic="63" data-group="3" data-period="6" data-oxidation="+2, +3">Eu</td>
+                <td data-symbol="Gd" data-name="Gadolinio" data-atomic="64" data-group="3" data-period="6" data-oxidation="+3">Gd</td>
+                <td data-symbol="Tb" data-name="Terbio" data-atomic="65" data-group="3" data-period="6" data-oxidation="+3">Tb</td>
+                <td data-symbol="Dy" data-name="Disprosio" data-atomic="66" data-group="3" data-period="6" data-oxidation="+3">Dy</td>
+                <td data-symbol="Ho" data-name="Holmio" data-atomic="67" data-group="3" data-period="6" data-oxidation="+3">Ho</td>
+                <td data-symbol="Er" data-name="Erbio" data-atomic="68" data-group="3" data-period="6" data-oxidation="+3">Er</td>
+                <td data-symbol="Tm" data-name="Tulio" data-atomic="69" data-group="3" data-period="6" data-oxidation="+3">Tm</td>
+                <td data-symbol="Yb" data-name="Iterbio" data-atomic="70" data-group="3" data-period="6" data-oxidation="+2, +3">Yb</td>
+                <td data-symbol="Lu" data-name="Lutecio" data-atomic="71" data-group="3" data-period="6" data-oxidation="+3">Lu</td>
+                <td data-symbol="Hf" data-name="Hafnio" data-atomic="72" data-group="4" data-period="6" data-oxidation="+4">Hf</td>
+                <td data-symbol="Ta" data-name="Tantalio" data-atomic="73" data-group="5" data-period="6" data-oxidation="+5">Ta</td>
+                <td data-symbol="W" data-name="Wolframio" data-atomic="74" data-group="6" data-period="6" data-oxidation="+2, +3, +4, +5, +6">W</td>
+                <td data-symbol="Re" data-name="Renio" data-atomic="75" data-group="7" data-period="6" data-oxidation="+2, +4, +6, +7">Re</td>
+                <td data-symbol="Os" data-name="Osmio" data-atomic="76" data-group="8" data-period="6" data-oxidation="+2, +3, +4, +6, +8">Os</td>
+                <td data-symbol="Ir" data-name="Iridio" data-atomic="77" data-group="9" data-period="6" data-oxidation="+1, +2, +3, +4">Ir</td>
+                <td data-symbol="Pt" data-name="Platino" data-atomic="78" data-group="10" data-period="6" data-oxidation="+2, +4">Pt</td>
+                <td data-symbol="Au" data-name="Oro" data-atomic="79" data-group="11" data-period="6" data-oxidation="+1, +3">Au</td>
+                <td data-symbol="Hg" data-name="Mercurio" data-atomic="80" data-group="12" data-period="6" data-oxidation="+1, +2">Hg</td>
+                <td data-symbol="Tl" data-name="Talio" data-atomic="81" data-group="13" data-period="6" data-oxidation="+1, +3">Tl</td>
+                <td data-symbol="Pb" data-name="Plomo" data-atomic="82" data-group="14" data-period="6" data-oxidation="-4, +2, +4">Pb</td>
+                <td data-symbol="Bi" data-name="Bismuto" data-atomic="83" data-group="15" data-period="6" data-oxidation="-3, +3, +5">Bi</td>
+                <td data-symbol="Po" data-name="Polonio" data-atomic="84" data-group="16" data-period="6" data-oxidation="-2, +2, +4, +6">Po</td>
+                <td data-symbol="At" data-name="Astato" data-atomic="85" data-group="17" data-period="6" data-oxidation="-1, +1, +3, +5, +7">At</td>
+                <td data-symbol="Rn" data-name="Radón" data-atomic="86" data-group="18" data-period="6" data-oxidation="N/A">Rn</td>
+            </tr>
+            <tr>
+                <td data-symbol="Fr" data-name="Francio" data-atomic="87" data-group="1" data-period="7" data-oxidation="+1">Fr</td>
+                <td data-symbol="Ra" data-name="Radio" data-atomic="88" data-group="2" data-period="7" data-oxidation="+2">Ra</td>
+                <td data-symbol="Ac" data-name="Actinio" data-atomic="89" data-group="3" data-period="7" data-oxidation="+3">Ac</td>
+                <td data-symbol="Th" data-name="Torio" data-atomic="90" data-group="3" data-period="7" data-oxidation="+4">Th</td>
+                <td data-symbol="Pa" data-name="Protactinio" data-atomic="91" data-group="3" data-period="7" data-oxidation="+4, +5">Pa</td>
+                <td data-symbol="U" data-name="Uranio" data-atomic="92" data-group="3" data-period="7" data-oxidation="+3, +4, +5, +6">U</td>
+                <td data-symbol="Np" data-name="Neptunio" data-atomic="93" data-group="3" data-period="7" data-oxidation="+3, +4, +5, +6">Np</td>
+                <td data-symbol="Pu" data-name="Plutonio" data-atomic="94" data-group="3" data-period="7" data-oxidation="+3, +4, +5, +6">Pu</td>
+                <td data-symbol="Am" data-name="Americio" data-atomic="95" data-group="3" data-period="7" data-oxidation="+3">Am</td>
+                <td data-symbol="Cm" data-name="Curio" data-atomic="96" data-group="3" data-period="7" data-oxidation="+3">Cm</td>
+                <td data-symbol="Bk" data-name="Berkelio" data-atomic="97" data-group="3" data-period="7" data-oxidation="+3">Bk</td>
+                <td data-symbol="Cf" data-name="Californio" data-atomic="98" data-group="3" data-period="7" data-oxidation="+3">Cf</td>
+                <td data-symbol="Es" data-name="Einstenio" data-atomic="99" data-group="3" data-period="7" data-oxidation="+3">Es</td>
+                <td data-symbol="Fm" data-name="Fermio" data-atomic="100" data-group="3" data-period="7" data-oxidation="+3">Fm</td>
+                <td data-symbol="Md" data-name="Mendelevio" data-atomic="101" data-group="3" data-period="7" data-oxidation="+3">Md</td>
+                <td data-symbol="No" data-name="Nobelio" data-atomic="102" data-group="3" data-period="7" data-oxidation="+2, +3">No</td>
+                <td data-symbol="Lr" data-name="Lawrencio" data-atomic="103" data-group="3" data-period="7" data-oxidation="+3">Lr</td>
+                <td data-symbol="Rf" data-name="Rutherfordio" data-atomic="104" data-group="4" data-period="7" data-oxidation="+4">Rf</td>
+                <td data-symbol="Db" data-name="Dubnio" data-atomic="105" data-group="5" data-period="7" data-oxidation="+5">Db</td>
+                <td data-symbol="Sg" data-name="Seaborgio" data-atomic="106" data-group="6" data-period="7" data-oxidation="+6">Sg</td>
+                <td data-symbol="Bh" data-name="Bohrio" data-atomic="107" data-group="7" data-period="7" data-oxidation="+7">Bh</td>
+                <td data-symbol="Hs" data-name="Hassio" data-atomic="108" data-group="8" data-period="7" data-oxidation="+4, +6">Hs</td>
+                <td data-symbol="Mt" data-name="Meitnerio" data-atomic="109" data-group="9" data-period="7" data-oxidation="+2, +4">Mt</td>
+                <td data-symbol="Ds" data-name="Darmstadtio" data-atomic="110" data-group="10" data-period="7" data-oxidation="+2">Ds</td>
+                <td data-symbol="Rg" data-name="Roentgenio" data-atomic="111" data-group="11" data-period="7" data-oxidation="+1, +3">Rg</td>
+                <td data-symbol="Cn" data-name="Copernicio" data-atomic="112" data-group="12" data-period="7" data-oxidation="+2">Cn</td>
+                <td data-symbol="Nh" data-name="Nihonio" data-atomic="113" data-group="13" data-period="7" data-oxidation="+1, +3">Nh</td>
+                <td data-symbol="Fl" data-name="Flerovio" data-atomic="114" data-group="14" data-period="7" data-oxidation="+2, +4">Fl</td>
+                <td data-symbol="Mc" data-name="Moscovio" data-atomic="115" data-group="15" data-period="7" data-oxidation="+1, +3, +5">Mc</td>
+                <td data-symbol="Lv" data-name="Livermorio" data-atomic="116" data-group="16" data-period="7" data-oxidation="+1, +2, +4">Lv</td>
+                <td data-symbol="Ts" data-name="Tennessino" data-atomic="117" data-group="17" data-period="7" data-oxidation="-1">Ts</td>
+                <td data-symbol="Og" data-name="Oganesón" data-atomic="118" data-group="18" data-period="7" data-oxidation="N/A">Og</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="element-info" class="info-box">
+        <h2>Información del Elemento</h2>
+        <p><strong>Símbolo:</strong> <span id="element-symbol"></span></p>
+        <p><strong>Nombre:</strong> <span id="element-name"></span></p>
+        <p><strong>Número Atómico:</strong> <span id="element-atomic"></span></p>
+        <p><strong>Grupo:</strong> <span id="element-group"></span></p>
+        <p><strong>Período:</strong> <span id="element-period"></span></p>
+        <p><strong>Oxidación:</strong> <span id="element-oxidation"></span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+    

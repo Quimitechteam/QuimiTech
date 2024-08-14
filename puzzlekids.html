@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+    <html lang="es">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="styles.css"> 
+        </head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <img src="logon.png" alt="Logo de QuimiTech" class="logo">
+            <div class="header-text">
+                <h1>QuimiTech</h1>
+                <p>Tu recurso definitivo para aprender nomenclatura química</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="tutoriales.html">Tutoriales</a>
+        <a href="recursos.html">Recursos</a>
+        <a href="juegos.html">Juegos</a>
+        <a href="quimikids.html">QuimiKids</a>
+    </nav>
+
+    <div class="container">
+        <div class="game-container">
+            <h2>Rompecabezas Químico</h2>
+            <div class="timer" id="timer">Tiempo: 00:00</div>
+            <img src="rompeca.png" alt="Imagen de referencia del rompecabezas" class="reference-image">
+            <p>Arrastra las piezas para formar la imagen completa.</p>
+            <div class="puzzle-container" id="puzzleContainer">
+               
+            </div>
+            <button onclick="shufflePuzzle()">Reiniciar Juego</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 QuimiTech. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const puzzleContainer = document.getElementById('puzzleContainer');
+        const timerElement = document.getElementById('timer');
+        const puzzleSize = 4; 
+        const pieceSize = 120; 
+        let pieces = [];
+        let pieceOrder = [];
+        let timer;
+        let seconds = 0;
+
+        function createPuzzle() {
+            puzzleContainer.innerHTML = '';
+            pieces = [];
+            pieceOrder = [];
+
+            for (let i = 0; i < puzzleSize * puzzleSize; i++) {
+                const piece = document.createElement('div');
+                piece.classList.add('puzzle-piece');
+                piece.style.backgroundImage = `url('rompeca.png')`;
+                piece.style.backgroundPosition = `-${(i % puzzleSize) * pieceSize}px -${Math.floor(i / puzzleSize) * pieceSize}px`;
+                piece.style.left = `${(i % puzzleSize) * pieceSize}px`;
+                piece.style.top = `${Math.floor(i / puzzleSize) * pieceSize}px`;
+
+                piece.draggable = true;
+                piece.dataset.index = i;
+                piece.addEventListener('dragstart', onDragStart);
+                piece.addEventListener('dragover', onDragOver);
+                piece.addEventListener('drop', onDrop);
+
+                pieces.push(piece);
+                pieceOrder.push(i);
+                puzzleContainer.appendChild(piece);
+            }
+
+            shufflePuzzle();
+            startTimer();
+        }
+
+        function shufflePuzzle() {
+            pieceOrder = pieceOrder.sort(() => Math.random() - 0.5);
+
+            for (let i = 0; i < pieces.length; i++) {
+                const piece = pieces[i];
+                const newIndex = pieceOrder[i];
+                const newLeft = (newIndex % puzzleSize) * pieceSize;
+                const newTop = Math.floor(newIndex / puzzleSize) * pieceSize;
+
+                piece.style.left = `${newLeft}px`;
+                piece.style.top = `${newTop}px`;
+            }
+
+            resetTimer();
+        }
+
+        function onDragStart(event) {
+            event.dataTransfer.setData('text/plain', event.target.dataset.index);
+            event.dataTransfer.effectAllowed = 'move';
+        }
+
+        function onDragOver(event) {
+            event.preventDefault();
+            event.dataTransfer.dropEffect = 'move';
+        }
+
+        function onDrop(event) {
+            event.preventDefault();
+            const fromIndex = event.dataTransfer.getData('text/plain');
+            const toIndex = getPieceIndexFromEvent(event);
+
+            if (fromIndex !== toIndex) {
+                swapPieces(fromIndex, toIndex);
+            }
+        }
+
+        function getPieceIndexFromEvent(event) {
+            const piece = event.target.closest('.puzzle-piece');
+            const pieceIndex = pieces.indexOf(piece);
+            return pieceIndex;
+        }
+
+        function swapPieces(fromIndex, toIndex) {
+            const fromPiece = pieces[fromIndex];
+            const toPiece = pieces[toIndex];
+
+            const fromLeft = fromPiece.style.left;
+            const fromTop = fromPiece.style.top;
+
+            fromPiece.style.left = toPiece.style.left;
+            fromPiece.style.top = toPiece.style.top;
+
+            toPiece.style.left = fromLeft;
+            toPiece.style.top = fromTop;
+
+            const tempIndex = pieceOrder[fromIndex];
+            pieceOrder[fromIndex] = pieceOrder[toIndex];
+            pieceOrder[toIndex] = tempIndex;
+        }
+
+        function startTimer() {
+            timer = setInterval(() => {
+                seconds++;
+                const minutes = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                timerElement.textContent = `Tiempo: ${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            seconds = 0;
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            timerElement.textContent = `Tiempo: ${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            startTimer();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createPuzzle();
+        });
+    </script>
+</body>
+<br>
+<br>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sopa de Letras: Polianiones Comunes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #004080;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            max-height: 250px;
+            width: auto;
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Croissant One', serif;
+            font-weight: 400;
+            font-size: 4rem;
+        }
+
+        header p {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-size: 1.5rem;
+        }
+
+        nav {
+            background-color: #003366;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            display: inline-block;
+            font-size: 1.25rem;
+        }
+
+        nav a:hover {
+            background-color: #002244;
+        }
+
+        .sopa-letras {
+            display: grid;
+            grid-template-columns: repeat(14, 40px);
+            grid-gap: 5px;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .sopa-letras div {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            font-size: 18px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .sopa-letras div.found {
+            background-color: yellow;
+        }
+
+        .lista-palabras {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px;
+        }
+
+        button {
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #0277bd;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #01579b;
+        }
+
+        #resultado {
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            color: #01579b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-text">
+                <h1>Sopa de Letras: Polianiones Comunes</h1>
+                <p>Encuentra los polianiones en la sopa de letras</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="tutoriales.html">Tutoriales</a>
+        <a href="recursos.html">Recursos</a>
+        <a href="juegos.html">Juegos</a>
+        <a href="quimikids.html">QuimiKids</a>
+    </nav>
+
+    <div class="lista-palabras">
+        <p><strong>Palabras a encontrar:</strong></p>
+        <p>Fosfato, Sulfato, Nitrato, Carbonato, Silicato, Permanganato, Dicromato, Borato, Cromato, Tiosulfato, 
+           Fosfito, Fosfato de Hidrógeno, Arseniato, Vanadato, Manganato, Oxalato, Cianato, Peroxido, Yodato</p>
+    </div>
+
+    <div class="sopa-letras">
+        <div>F</div><div>O</div><div>S</div><div>F</div><div>A</div><div>T</div><div>O</div><div>R</div><div>Y</div><div>L</div><div>A</div><div>S</div><div>M</div><div>N</div>
+        <div>P</div><div>E</div><div>R</div><div>O</div><div>X</div><div>I</div><div>D</div><div>O</div><div>R</div><div>E</div><div>V</div><div>A</div><div>N</div><div>D</div>
+        <div>A</div><div>N</div><div>I</div><div>T</div><div>R</div><div>A</div><div>T</div><div>O</div><div>F</div><div>O</div><div>S</div><div>F</div><div>A</div><div>T</div>
+        <div>C</div><div>R</div><div>O</div><div>M</div><div>A</div><div>T</div><div>O</div><div>B</div><div>A</div><div>N</div><div>A</div><div>T</div><div>A</div><div>D</div>
+        <div>B</div><div>I</div><div>C</div><div>R</div><div>O</div><div>M</div><div>A</div><div>T</div><div>O</div><div>M</div><div>A</div><div>N</div><div>G</div><div>A</div>
+        <div>O</div><div>X</div><div>A</div><div>L</div><div>A</div><div>T</div><div>O</div><div>C</div><div>R</div><div>A</div><div>T</div><div>E</div><div>O</div><div>T</div>
+        <div>P</div><div>E</div><div>R</div><div>M</div><div>A</div><div>N</div><div>G</div><div>A</div><div>N</div><div>A</div><div>T</div><div>O</div><div>P</div><div>O</div>
+        <div>O</div><div>B</div><div>R</div><div>A</div><div>T</div><div>O</div><div>O</div><div>X</div><div>A</div><div>L</div><div>A</div><div>T</div><div>O</div><div>S</div>
+        <div>S</div><div>I</div><div>L</div><div>I</div><div>C</div><div>A</div><div>T</div><div>O</div><div>O</div><div>S</div><div>F</div><div>I</div><div>F</div><div>T</div>
+        <div>F</div><div>O</div><div>S</div><div>F</div><div>A</div><div>T</div><div>O</div><div>H</div><div>I</div><div>D</div><div>R</div><div>O</div><div>G</div><div>E</div>
+        <div>R</div><div>C</div><div>I</div><div>A</div><div>N</div><div>A</div><div>T</div><div>O</div><div>Y</div><div>O</div><div>D</div><div>A</div><div>T</div><div>O</div>
+        <div>F</div><div>I</div><div>T</div><div>A</div><div>C</div><div>O</div><div>B</div><div>R</div><div>A</div><div>T</div><div>O</div><div>S</div><div>F</div><div>I</div>
+        <div>A</div><div>R</div><div>S</div><div>E</div><div>N</div><div>I</div><div>A</div><div>T</div><div>O</div><div>P</div><div>E</div><div>R</div><div>O</div><div>X</div>
+        <div>T</div><div>I</div><div>O</div><div>S</div><div>U</div><div>L</div><div>F</div><div>A</div><div>T</div><div>O</div><div>C</div><div>R</div><div>O</div><div>M</div>
+    </div>
+
+    <button id="resultado">Verificar Palabras</button>
+
+    <script>
+        const palabras = ["FOSFATO", "SULFATO", "NITRATO", "CARBONATO", "SILICATO", "PERMANGANATO", "DICROMATO", "BORATO", "CROMATO", 
+                          "TIOSULFATO", "FOSFITO", "FOSFATO DE HIDRÓGENO", "ARSENIATO", "VANADATO", "MANGANATO", "OXALATO", "CIANATO", 
+                          "PEROXIDO", "YODATO"];
+        let palabrasEncontradas = [];
+
+        document.querySelectorAll('.sopa-letras div').forEach(celda => {
+            celda.addEventListener('click', () => {
+                celda.classList.toggle('found');
+                checkCompletion();
+            });
+        });
+
+        document.getElementById('resultado').addEventListener('click', () => {
+            checkCompletion();
+        });
+
+        function checkCompletion() {
+            let palabrasRestantes = palabras.filter(palabra => !palabrasEncontradas.includes(palabra));
+            if (palabrasRestantes.length === 0) {
+                document.getElementById('resultado').textContent = '¡Felicidades! Has encontrado todos los polianiones.';
+            } else {
+                document.getElementById('resultado').textContent = `Faltan palabras: ${palabrasRestantes.join(', ')}`;
+            }
+        }
+    </script>
+</body>
+</html>
