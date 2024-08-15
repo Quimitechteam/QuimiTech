@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sopa de Letras: Polianiones Comunes</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e0f7fa;
             margin: 0;
             padding: 0;
-            text-align: center;
+            background-color: #f0f4f8;
+            color: #333;
+            font-size: 18px;
         }
 
         header {
@@ -26,11 +24,11 @@
         .header-content {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .logo {
@@ -74,16 +72,63 @@
             background-color: #002244;
         }
 
-        .sopa-letras {
-            display: grid;
-            grid-template-columns: repeat(14, 40px);
-            grid-gap: 5px;
-            justify-content: center;
-            margin: 20px auto;
-            max-width: 600px;
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 3rem 0;
+            display: block;
         }
 
-        .sopa-letras div {
+        .hero {
+            background-color: #cce0ff;
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            margin-top: 0;
+            color: #003366;
+            font-size: 2.5rem;
+        }
+
+        .section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .section h3 {
+            color: #004080;
+            font-size: 2rem;
+        }
+
+        footer {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        img {
+            max-width: 40%;
+            height: auto;
+            display: block;
+            margin: 3rem 0;
+        }
+
+        #wordSearchContainer {
+            display: grid;
+            grid-template-columns: repeat(15, 40px);
+            grid-gap: 2px;
+            max-width: 650px;
+            margin: 20px auto;
+        }
+
+        #wordSearchContainer div {
             width: 40px;
             height: 40px;
             display: flex;
@@ -92,22 +137,49 @@
             background-color: #ffffff;
             border: 1px solid #ccc;
             font-size: 18px;
-            text-transform: uppercase;
             cursor: pointer;
         }
 
-        .sopa-letras div.found {
-            background-color: yellow;
+        #wordSearchContainer div.selected {
+            background-color: #add8e6;
         }
 
-        .lista-palabras {
+        #wordSearchContainer div.found {
+            background-color: #90ee90;
+        }
+
+        .wordsList {
             text-align: center;
             font-size: 18px;
-            margin: 20px;
+            margin: 20px auto;
+            max-width: 90%;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        button {
-            margin-top: 2rem;
+        .wordsList div {
+            padding: 8px 16px;
+            margin: 5px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .wordsList div.found::after {
+            content: ' ✔️';
+            color: green;
+        }
+
+        .wordsList div.found {
+            background-color: #90ee90;
+        }
+
+        #generateNew {
+            margin: 20px;
             padding: 0.75rem 1.5rem;
             font-size: 1rem;
             cursor: pointer;
@@ -118,23 +190,31 @@
             transition: background-color 0.3s;
         }
 
-        button:hover {
+        #generateNew:hover {
             background-color: #01579b;
         }
 
-        #resultado {
-            margin-top: 1rem;
-            font-size: 1.25rem;
+        #message {
+            display: none;
+            text-align: center;
+            font-size: 1.5rem;
             color: #01579b;
+            margin-top: 20px;
+        }
+
+        #message img {
+            max-width: 100px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
+            <img src="logon.png" alt="Logo de QuimiTech" class="logo">
             <div class="header-text">
-                <h1>Sopa de Letras: Polianiones Comunes</h1>
-                <p>Encuentra los polianiones en la sopa de letras</p>
+                <h1>QuimiTech</h1>
+                <p>Tu recurso definitivo para aprender nomenclatura química</p>
             </div>
         </div>
     </header>
@@ -147,55 +227,156 @@
         <a href="quimikids.html">QuimiKids</a>
     </nav>
 
-    <div class="lista-palabras">
-        <p><strong>Palabras a encontrar:</strong></p>
-        <p>Fosfato, Sulfato, Nitrato, Carbonato, Silicato, Permanganato, Dicromato, Borato, Cromato, Tiosulfato, 
-           Fosfito, Fosfato de Hidrógeno, Arseniato, Vanadato, Manganato, Oxalato, Cianato, Peroxido, Yodato</p>
-    </div>
+    <h1 style="text-align: center;">Sopa de Letras: Polianiones Comunes</h1>
 
-    <div class="sopa-letras">
-        <div>F</div><div>O</div><div>S</div><div>F</div><div>A</div><div>T</div><div>O</div><div>R</div><div>Y</div><div>L</div><div>A</div><div>S</div><div>M</div><div>N</div>
-        <div>P</div><div>E</div><div>R</div><div>O</div><div>X</div><div>I</div><div>D</div><div>O</div><div>R</div><div>E</div><div>V</div><div>A</div><div>N</div><div>D</div>
-        <div>A</div><div>N</div><div>I</div><div>T</div><div>R</div><div>A</div><div>T</div><div>O</div><div>F</div><div>O</div><div>S</div><div>F</div><div>A</div><div>T</div>
-        <div>C</div><div>R</div><div>O</div><div>M</div><div>A</div><div>T</div><div>O</div><div>B</div><div>A</div><div>N</div><div>A</div><div>T</div><div>A</div><div>D</div>
-        <div>B</div><div>I</div><div>C</div><div>R</div><div>O</div><div>M</div><div>A</div><div>T</div><div>O</div><div>M</div><div>A</div><div>N</div><div>G</div><div>A</div>
-        <div>O</div><div>X</div><div>A</div><div>L</div><div>A</div><div>T</div><div>O</div><div>C</div><div>R</div><div>A</div><div>T</div><div>E</div><div>O</div><div>T</div>
-        <div>P</div><div>E</div><div>R</div><div>M</div><div>A</div><div>N</div><div>G</div><div>A</div><div>N</div><div>A</div><div>T</div><div>O</div><div>P</div><div>O</div>
-        <div>O</div><div>B</div><div>R</div><div>A</div><div>T</div><div>O</div><div>O</div><div>X</div><div>A</div><div>L</div><div>A</div><div>T</div><div>O</div><div>S</div>
-        <div>S</div><div>I</div><div>L</div><div>I</div><div>C</div><div>A</div><div>T</div><div>O</div><div>O</div><div>S</div><div>F</div><div>I</div><div>F</div><div>T</div>
-        <div>F</div><div>O</div><div>S</div><div>F</div><div>A</div><div>T</div><div>O</div><div>H</div><div>I</div><div>D</div><div>R</div><div>O</div><div>G</div><div>E</div>
-        <div>R</div><div>C</div><div>I</div><div>A</div><div>N</div><div>A</div><div>T</div><div>O</div><div>Y</div><div>O</div><div>D</div><div>A</div><div>T</div><div>O</div>
-        <div>F</div><div>I</div><div>T</div><div>A</div><div>C</div><div>O</div><div>B</div><div>R</div><div>A</div><div>T</div><div>O</div><div>S</div><div>F</div><div>I</div>
-        <div>A</div><div>R</div><div>S</div><div>E</div><div>N</div><div>I</div><div>A</div><div>T</div><div>O</div><div>P</div><div>E</div><div>R</div><div>O</div><div>X</div>
-        <div>T</div><div>I</div><div>O</div><div>S</div><div>U</div><div>L</div><div>F</div><div>A</div><div>T</div><div>O</div><div>C</div><div>R</div><div>O</div><div>M</div>
-    </div>
+    <div id="wordSearchContainer"></div>
+    <div id="wordsList" class="wordsList"></div>
 
-    <button id="resultado">Verificar Palabras</button>
+    <button id="generateNew">Generar Nueva Sopa de Letras</button>
+    <button id="checkWords">Verificar Palabras Encontradas</button>
+
+    <div id="message">
+        <p>¡Felicidades! Has encontrado todas las palabras.</p>
+        <img src="celebration.gif" alt="¡Felicidades!">
+    </div>
 
     <script>
-        const palabras = ["FOSFATO", "SULFATO", "NITRATO", "CARBONATO", "SILICATO", "PERMANGANATO", "DICROMATO", "BORATO", "CROMATO", 
-                          "TIOSULFATO", "FOSFITO", "FOSFATO DE HIDRÓGENO", "ARSENIATO", "VANADATO", "MANGANATO", "OXALATO", "CIANATO", 
-                          "PEROXIDO", "YODATO"];
-        let palabrasEncontradas = [];
+        const words = ["FOSFATO", "SULFATO", "NITRATO", "CARBONATO", "SILICATO", "PERMANGANATO", "DICROMATO", "BORATO", "CROMATO", "TIOSULFATO", "FOSFITO", "CLORATO", "ARSENIATO", "VANADATO", "MANGANATO", "OXALATO", "CIANATO", "PEROXIDO", "YODATO"];
+        const gridSize = 15;
+        let wordGrid;
+        let currentSelection = [];
+        let wordsFound = [];
 
-        document.querySelectorAll('.sopa-letras div').forEach(celda => {
-            celda.addEventListener('click', () => {
-                celda.classList.toggle('found');
-                checkCompletion();
+        document.addEventListener('DOMContentLoaded', () => {
+            startNewGame();
+            document.getElementById('generateNew').addEventListener('click', startNewGame);
+            document.getElementById('checkWords').addEventListener('click', checkFoundWords);
+        });
+
+        function startNewGame() {
+            wordGrid = generateEmptyGrid(gridSize);
+            currentSelection = [];
+            wordsFound = [];
+            placeWordsInGrid(words, wordGrid);
+            fillEmptySpaces(wordGrid);
+            renderGrid(wordGrid);
+            renderWordsList(words);
+            document.getElementById('message').style.display = 'none';
+        }
+
+        function generateEmptyGrid(size) {
+            return Array(size).fill(null).map(() => Array(size).fill('_'));
+        }
+
+        function placeWordsInGrid(words, grid) {
+            words.forEach(word => {
+                let placed = false;
+                while (!placed) {
+                    const direction = Math.floor(Math.random() * 2); 
+                    const row = Math.floor(Math.random() * (gridSize - (direction === 0 ? 0 : word.length)));
+                    const col = Math.floor(Math.random() * (gridSize - (direction === 1 ? 0 : word.length)));
+                    if (canPlaceWordAt(word, grid, row, col, direction)) {
+                        for (let i = 0; i < word.length; i++) {
+                            if (direction === 0) {
+                                grid[row][col + i] = word[i];
+                            } else {
+                                grid[row + i][col] = word[i];
+                            }
+                        }
+                        placed = true;
+                    }
+                }
             });
-        });
+        }
 
-        document.getElementById('resultado').addEventListener('click', () => {
-            checkCompletion();
-        });
-
-        function checkCompletion() {
-            let palabrasRestantes = palabras.filter(palabra => !palabrasEncontradas.includes(palabra));
-            if (palabrasRestantes.length === 0) {
-                document.getElementById('resultado').textContent = '¡Felicidades! Has encontrado todos los polianiones.';
-            } else {
-                document.getElementById('resultado').textContent = `Faltan palabras: ${palabrasRestantes.join(', ')}`;
+        function canPlaceWordAt(word, grid, row, col, direction) {
+            if (direction === 0) 
+                if (col + word.length > gridSize) return false;
+                for (let i = 0; i < word.length; i++) {
+                    if (grid[row][col + i] !== '_' && grid[row][col + i] !== word[i]) return false;
+                }
+            } else { 
+                if (row + word.length > gridSize) return false;
+                for (let i = 0; i < word.length; i++) {
+                    if (grid[row + i][col] !== '_' && grid[row + i][col] !== word[i]) return false;
+                }
             }
+            return true;
+        }
+
+        function fillEmptySpaces(grid) {
+            for (let row = 0; row < gridSize; row++) {
+                for (let col = 0; col < gridSize; col++) {
+                    if (grid[row][col] === '_') {
+                        grid[row][col] = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                    }
+                }
+            }
+        }
+
+        function renderGrid(grid) {
+            const container = document.getElementById('wordSearchContainer');
+            container.innerHTML = '';
+            grid.forEach((row, rowIndex) => {
+                row.forEach((cell, colIndex) => {
+                    const cellElement = document.createElement('div');
+                    cellElement.textContent = cell;
+                    cellElement.dataset.index = rowIndex * gridSize + colIndex;
+                    cellElement.addEventListener('click', () => selectCell(rowIndex, colIndex, cellElement));
+                    container.appendChild(cellElement);
+                });
+            });
+        }
+
+        function renderWordsList(words) {
+            const wordsListContainer = document.getElementById('wordsList');
+            wordsListContainer.innerHTML = '';
+            words.forEach(word => {
+                const wordElement = document.createElement('div');
+                wordElement.textContent = word;
+                wordElement.setAttribute('data-word', word);
+                wordsListContainer.appendChild(wordElement);
+            });
+        }
+
+        function selectCell(rowIndex, colIndex, cellElement) {
+            const index = rowIndex * gridSize + colIndex;
+            if (currentSelection.includes(index)) return;
+            cellElement.classList.add('selected');
+            currentSelection.push(index);
+
+            const selectedWord = currentSelection.map(idx => {
+                const row = Math.floor(idx / gridSize);
+                const col = idx % gridSize;
+                return wordGrid[row][col];
+            }).join('');
+
+            if (words.includes(selectedWord) && !wordsFound.includes(selectedWord)) {
+                wordsFound.push(selectedWord);
+                alert(`¡Has encontrado la palabra "${selectedWord}"!`);
+                currentSelection.forEach(idx => {
+                    document.querySelector(`[data-index="${idx}"]`).classList.add('found');
+                });
+                document.querySelector(`[data-word="${selectedWord}"]`).classList.add('found');
+                currentSelection = [];
+
+                if (wordsFound.length === words.length) {
+                    setTimeout(() => {
+                        document.getElementById('message').style.display = 'block';
+                        document.getElementById('message').scrollIntoView({ behavior: 'smooth' });
+                    }, 1000);
+                }
+            } else if (!words.some(word => word.startsWith(selectedWord))) {
+                currentSelection.forEach(idx => {
+                    document.querySelector(`[data-index="${idx}"]`).classList.remove('selected');
+                });
+                currentSelection = [];
+            }
+        }
+
+        function checkFoundWords() {
+            const missingWords = words.filter(word => !wordsFound.includes(word));
+            alert(`Palabras encontradas: ${wordsFound.join(', ')}\nPalabras faltantes: ${missingWords.join(', ')}`);
         }
     </script>
 </body>
