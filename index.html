@@ -7,7 +7,169 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+            font-size: 18px;
+        }
+
+        header {
+            background-color: #004080;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .logo {
+            max-height: 250px;
+            width: auto;
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Croissant One', serif;
+            font-weight: 400;
+            font-size: 4rem;
+        }
+
+        header p {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-size: 1.5rem;
+        }
+
+        nav {
+            background-color: #003366;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            display: inline-block;
+            font-size: 1.25rem;
+        }
+
+        nav a:hover {
+            background-color: #002244;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 3rem 0;
+            display: block;
+        }
+
+        .hero {
+            background-color: #cce0ff;
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            margin-top: 0;
+            color: #003366;
+            font-size: 2.5rem;
+        }
+
+        .section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .section h3 {
+            color: #004080;
+            font-size: 2rem;
+        }
+
+        footer {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        img {
+            max-width: 40%;
+            height: auto;
+            display: block;
+            margin: 3rem 0;
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 60%;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .carousel img {
+            width: 100%; 
+            display: none;
+        }
+
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .carousel-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .contact-section p {
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,6 +197,20 @@
             <p>Descubre y domina la nomenclatura química con nuestros recursos y guías detalladas. Ya sea que seas un estudiante, un profesional o simplemente un entusiasta de la química, tenemos todo lo que necesitas para mejorar tu comprensión de los compuestos químicos y sus nombres.</p>
         </section>
 
+        <section class="section">
+            <div class="carousel">
+                <img src="grupo.png" alt="Imagen 1" class="active">
+                <img src="imagen.jpg" alt="Imagen 2">
+                <img src="logoitdb.jpg" alt="Imagen 3">
+                <img src="imagen4.jpg" alt="Imagen 4">
+
+                <div class="carousel-buttons">
+                    <button id="prevBtn">&#10094;</button>
+                    <button id="nextBtn">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
         <section class="section featured-resources">
             <h2>Recursos Destacados</h2>
             <div class="resource">
@@ -49,16 +225,46 @@
             <p>QuimiTech es una plataforma educativa dedicada a la enseñanza de la nomenclatura química. Nuestro objetivo es proporcionar recursos accesibles y detallados para ayudar a estudiantes y profesionales a comprender y aplicar las reglas de nomenclatura química en sus estudios y trabajos.</p>
         </section>
 
-        <section class="section">
+        <section class="section contact-section">
             <h3>Contacto</h3>
             <p>¿Tienes preguntas o comentarios? No dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarte en tu viaje de aprendizaje de la química.</p>
         </section>
     </div>
-<br>
-<br>
+    <br><br>
     <footer>
         <p>&copy; 2024 QuimiTech. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        const carouselImages = document.querySelectorAll('.carousel img');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            carouselImages.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselImages.length - 1;
+            showImage(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < carouselImages.length - 1) ? currentIndex + 1 : 0;
+            showImage(currentIndex);
+        });
+
+        setInterval(() => {
+            currentIndex = (currentIndex < carouselImages.length - 1) ? currentIndex + 1 : 0;
+            showImage(currentIndex);
+        }, 5000);
+    </script>
 </body>
 
 </html>
