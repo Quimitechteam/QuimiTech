@@ -1,15 +1,215 @@
 <!DOCTYPE html>
-    <html lang="es">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+            font-size: 18px;
+        }
 
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="styles.css"> 
-        </head>
+        header {
+            background-color: #004080;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
 
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            max-height: 250px;
+            width: auto;
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Croissant One', serif;
+            font-weight: 400;
+            font-size: 4rem;
+        }
+
+        header p {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-size: 1.5rem;
+        }
+
+        nav {
+            background-color: #003366;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            display: inline-block;
+            font-size: 1.25rem;
+        }
+
+        nav a:hover {
+            background-color: #002244;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 3rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .game-container {
+            background-color: #e6f0ff;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .game-container h2 {
+            color: #003366;
+            font-family: 'Croissant One', serif;
+            font-size: 3rem;
+        }
+
+        .timer {
+            font-size: 2rem;
+            margin: 2rem 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(4, 120px);
+            gap: 4px;
+            justify-content: center;
+            margin: 2rem auto;
+            position: relative;
+            width: 480px;
+            height: 480px;
+            border: 2px solid #003366;
+        }
+
+        .puzzle-piece {
+            width: 120px;
+            height: 120px;
+            background-size: 480px 480px;
+            cursor: pointer;
+            position: absolute;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            z-index: 1;
+        }
+
+        .reference-image {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #003366;
+            margin-bottom: 2rem;
+        }
+
+        .game-container button {
+            background-color: #004080;
+            color: #fff;
+            border: none;
+            padding: 1.25rem 2.5rem;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 2rem;
+        }
+
+        .game-container button:hover {
+            background-color: #003366;
+        }
+
+        .congratulations {
+            display: none;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .congratulations img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #003366;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                max-height: 200px;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav a {
+                padding: 0.5rem;
+                font-size: 1rem;
+            }
+
+            .game-container {
+                padding: 1.5rem;
+                max-width: 100%;
+            }
+
+            .game-container h2 {
+                font-size: 2rem;
+            }
+
+            .timer {
+                font-size: 1.5rem;
+            }
+
+            .reference-image {
+                max-width: 90%;
+            }
+
+            .game-container button {
+                font-size: 1rem;
+                padding: 1rem 2rem;
+            }
+        }
+    </style>
+    <title>Rompecabezas Químico</title>
+</head>
 <body>
     <header>
         <div class="header-content">
@@ -34,11 +234,13 @@
             <h2>Rompecabezas Químico</h2>
             <div class="timer" id="timer">Tiempo: 00:00</div>
             <img src="rompeca.png" alt="Imagen de referencia del rompecabezas" class="reference-image">
-            <p>Arrastra las piezas para formar la imagen completa.</p>
-            <div class="puzzle-container" id="puzzleContainer">
-               
-            </div>
+            <div class="puzzle-container" id="puzzleContainer"></div>
             <button onclick="shufflePuzzle()">Reiniciar Juego</button>
+            <div class="congratulations" id="congratulations">
+                <h3>¡Felicidades!</h3>
+                <img src="celebration.gif" alt="Felicidades">
+                <p>¡Has completado el rompecabezas!</p>
+            </div>
         </div>
     </div>
 
@@ -49,10 +251,12 @@
     <script>
         const puzzleContainer = document.getElementById('puzzleContainer');
         const timerElement = document.getElementById('timer');
+        const congratulationsElement = document.getElementById('congratulations');
         const puzzleSize = 4; 
         const pieceSize = 120; 
         let pieces = [];
         let pieceOrder = [];
+        let correctPieceOrder = [];
         let timer;
         let seconds = 0;
 
@@ -60,6 +264,7 @@
             puzzleContainer.innerHTML = '';
             pieces = [];
             pieceOrder = [];
+            correctPieceOrder = [];
 
             for (let i = 0; i < puzzleSize * puzzleSize; i++) {
                 const piece = document.createElement('div');
@@ -77,11 +282,11 @@
 
                 pieces.push(piece);
                 pieceOrder.push(i);
+                correctPieceOrder.push(i); 
                 puzzleContainer.appendChild(piece);
             }
 
             shufflePuzzle();
-            startTimer();
         }
 
         function shufflePuzzle() {
@@ -98,6 +303,7 @@
             }
 
             resetTimer();
+            congratulationsElement.style.display = 'none'; 
         }
 
         function onDragStart(event) {
@@ -112,36 +318,34 @@
 
         function onDrop(event) {
             event.preventDefault();
-            const fromIndex = event.dataTransfer.getData('text/plain');
-            const toIndex = getPieceIndexFromEvent(event);
+            const sourceIndex = event.dataTransfer.getData('text/plain');
+            const targetElement = event.target.closest('.puzzle-piece');
 
-            if (fromIndex !== toIndex) {
-                swapPieces(fromIndex, toIndex);
+            if (targetElement) {
+                const targetIndex = targetElement.dataset.index;
+                if (sourceIndex !== targetIndex) {
+                    swapPieces(sourceIndex, targetIndex);
+                    checkCompletion(); 
+                }
             }
         }
 
-        function getPieceIndexFromEvent(event) {
-            const piece = event.target.closest('.puzzle-piece');
-            const pieceIndex = pieces.indexOf(piece);
-            return pieceIndex;
-        }
+        function swapPieces(sourceIndex, targetIndex) {
+            const sourcePiece = pieces[sourceIndex];
+            const targetPiece = pieces[targetIndex];
 
-        function swapPieces(fromIndex, toIndex) {
-            const fromPiece = pieces[fromIndex];
-            const toPiece = pieces[toIndex];
+            const tempLeft = sourcePiece.style.left;
+            const tempTop = sourcePiece.style.top;
 
-            const fromLeft = fromPiece.style.left;
-            const fromTop = fromPiece.style.top;
+            sourcePiece.style.left = targetPiece.style.left;
+            sourcePiece.style.top = targetPiece.style.top;
 
-            fromPiece.style.left = toPiece.style.left;
-            fromPiece.style.top = toPiece.style.top;
+            targetPiece.style.left = tempLeft;
+            targetPiece.style.top = tempTop;
 
-            toPiece.style.left = fromLeft;
-            toPiece.style.top = fromTop;
-
-            const tempIndex = pieceOrder[fromIndex];
-            pieceOrder[fromIndex] = pieceOrder[toIndex];
-            pieceOrder[toIndex] = tempIndex;
+            const tempIndex = pieceOrder[sourceIndex];
+            pieceOrder[sourceIndex] = pieceOrder[targetIndex];
+            pieceOrder[targetIndex] = tempIndex;
         }
 
         function startTimer() {
@@ -156,17 +360,34 @@
         function resetTimer() {
             clearInterval(timer);
             seconds = 0;
-            const minutes = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            timerElement.textContent = `Tiempo: ${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            timerElement.textContent = 'Tiempo: 00:00';
             startTimer();
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            createPuzzle();
-        });
+        function checkCompletion() {
+            let isComplete = true;
+
+            for (let i = 0; i < pieces.length; i++) {
+                const piece = pieces[i];
+                const index = pieceOrder[i];
+                const expectedLeft = (correctPieceOrder[i] % puzzleSize) * pieceSize;
+                const expectedTop = Math.floor(correctPieceOrder[i] / puzzleSize) * pieceSize;
+
+                if (parseInt(piece.style.left, 10) !== expectedLeft || parseInt(piece.style.top, 10) !== expectedTop) {
+                    isComplete = false;
+                    break;
+                }
+            }
+
+            if (isComplete) {
+                clearInterval(timer);
+                setTimeout(() => { 
+                    congratulationsElement.style.display = 'block'; 
+                }, 500);
+            }
+        }
+
+        window.onload = createPuzzle;
     </script>
 </body>
-<br>
-<br>
 </html>
