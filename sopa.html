@@ -272,7 +272,7 @@
             words.forEach(word => {
                 let placed = false;
                 while (!placed) {
-                    const direction = Math.floor(Math.random() * 2); 
+                    const direction = Math.floor(Math.random() * 2); // 0 for horizontal, 1 for vertical
                     const row = Math.floor(Math.random() * (gridSize - (direction === 0 ? 0 : word.length)));
                     const col = Math.floor(Math.random() * (gridSize - (direction === 1 ? 0 : word.length)));
                     if (canPlaceWordAt(word, grid, row, col, direction)) {
@@ -290,12 +290,12 @@
         }
 
         function canPlaceWordAt(word, grid, row, col, direction) {
-            if (direction === 0) 
+            if (direction === 0) { // horizontal
                 if (col + word.length > gridSize) return false;
                 for (let i = 0; i < word.length; i++) {
                     if (grid[row][col + i] !== '_' && grid[row][col + i] !== word[i]) return false;
                 }
-            } else { 
+            } else { // vertical
                 if (row + word.length > gridSize) return false;
                 for (let i = 0; i < word.length; i++) {
                     if (grid[row + i][col] !== '_' && grid[row + i][col] !== word[i]) return false;
