@@ -203,8 +203,9 @@
         }
 
         #message img {
-            max-width: 100px;
-            margin-top: 10px;
+            max-width: 200px;
+            height: auto;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -237,11 +238,12 @@
 
     <div id="message">
         <p>¡Felicidades! Has encontrado todas las palabras.</p>
-        <img src="celebration.gif" alt="¡Felicidades!">
+        <img src="celebration.gif" alt="¡Felicidades!" style="display: block; margin: 0 auto;">
     </div>
 
     <script>
         const words = ["FOSFATO", "SULFATO", "NITRATO", "CARBONATO", "SILICATO", "PERMANGANATO", "DICROMATO", "BORATO", "CROMATO", "TIOSULFATO", "FOSFITO", "CLORATO", "ARSENIATO", "VANADATO", "MANGANATO", "OXALATO", "CIANATO", "PEROXIDO", "YODATO"];
+        const formulas = ["PO₄³⁻", "SO₄²⁻", "NO₃⁻", "CO₃²⁻", "SiO₄⁴⁻", "MnO₄⁻", "Cr₂O₇²⁻", "BO₃³⁻", "CrO₄²⁻", "S₂O₃²⁻", "PO₃³⁻", "ClO₃⁻", "AsO₄³⁻", "VO₄³⁻", "MnO₄²⁻", "C₂O₄²⁻", "OCN⁻", "O₂²⁻", "IO₃⁻"];
         const gridSize = 15;
         let wordGrid;
         let currentSelection = [];
@@ -260,7 +262,7 @@
             placeWordsInGrid(words, wordGrid);
             fillEmptySpaces(wordGrid);
             renderGrid(wordGrid);
-            renderWordsList(words);
+            renderWordsList(formulas);
             document.getElementById('message').style.display = 'none';
         }
 
@@ -275,13 +277,10 @@
                     const direction = Math.floor(Math.random() * 2); // 0 for horizontal, 1 for vertical
                     const row = Math.floor(Math.random() * (gridSize - (direction === 0 ? 0 : word.length)));
                     const col = Math.floor(Math.random() * (gridSize - (direction === 1 ? 0 : word.length)));
+
                     if (canPlaceWordAt(word, grid, row, col, direction)) {
                         for (let i = 0; i < word.length; i++) {
-                            if (direction === 0) {
-                                grid[row][col + i] = word[i];
-                            } else {
-                                grid[row + i][col] = word[i];
-                            }
+                            grid[row + (direction === 1 ? i : 0)][col + (direction === 0 ? i : 0)] = word[i];
                         }
                         placed = true;
                     }
@@ -290,25 +289,21 @@
         }
 
         function canPlaceWordAt(word, grid, row, col, direction) {
-            if (direction === 0) { // horizontal
-                if (col + word.length > gridSize) return false;
-                for (let i = 0; i < word.length; i++) {
-                    if (grid[row][col + i] !== '_' && grid[row][col + i] !== word[i]) return false;
-                }
-            } else { // vertical
-                if (row + word.length > gridSize) return false;
-                for (let i = 0; i < word.length; i++) {
-                    if (grid[row + i][col] !== '_' && grid[row + i][col] !== word[i]) return false;
+            for (let i = 0; i < word.length; i++) {
+                const newRow = row + (direction === 1 ? i : 0);
+                const newCol = col + (direction === 0 ? i : 0);
+                if (grid[newRow][newCol] !== '_') {
+                    return false;
                 }
             }
             return true;
         }
 
         function fillEmptySpaces(grid) {
-            for (let row = 0; row < gridSize; row++) {
-                for (let col = 0; col < gridSize; col++) {
-                    if (grid[row][col] === '_') {
-                        grid[row][col] = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+            for (let i = 0; i < grid.length; i++) {
+                for (let j = 0; j < grid[i].length; j++) {
+                    if (grid[i][j] === '_') {
+                        grid[i][j] = String.fromCharCode(65 + Math.floor(Math.random() * 26)); // Random letter A-Z
                     }
                 }
             }
@@ -317,66 +312,69 @@
         function renderGrid(grid) {
             const container = document.getElementById('wordSearchContainer');
             container.innerHTML = '';
-            grid.forEach((row, rowIndex) => {
-                row.forEach((cell, colIndex) => {
-                    const cellElement = document.createElement('div');
-                    cellElement.textContent = cell;
-                    cellElement.dataset.index = rowIndex * gridSize + colIndex;
-                    cellElement.addEventListener('click', () => selectCell(rowIndex, colIndex, cellElement));
-                    container.appendChild(cellElement);
+            grid.forEach((row, i) => {
+                row.forEach((letter, j) => {
+                    const cell = document.createElement('div');
+                    cell.textContent = letter;
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', () => handleCellClick(cell, i, j));
+                    container.appendChild(cell);
                 });
             });
         }
 
-        function renderWordsList(words) {
-            const wordsListContainer = document.getElementById('wordsList');
-            wordsListContainer.innerHTML = '';
-            words.forEach(word => {
-                const wordElement = document.createElement('div');
-                wordElement.textContent = word;
-                wordElement.setAttribute('data-word', word);
-                wordsListContainer.appendChild(wordElement);
+        function renderWordsList(formulas) {
+            const listContainer = document.getElementById('wordsList');
+            listContainer.innerHTML = '';
+            formulas.forEach(formula => {
+                const wordItem = document.createElement('div');
+                wordItem.textContent = formula;
+                listContainer.appendChild(wordItem);
             });
         }
 
-        function selectCell(rowIndex, colIndex, cellElement) {
-            const index = rowIndex * gridSize + colIndex;
-            if (currentSelection.includes(index)) return;
-            cellElement.classList.add('selected');
-            currentSelection.push(index);
+        function handleCellClick(cell, row, col) {
+            cell.classList.toggle('selected');
+            const index = currentSelection.findIndex(pos => pos.row === row && pos.col === col);
+            if (index === -1) {
+                currentSelection.push({ row, col, element: cell });
+            } else {
+                currentSelection.splice(index, 1);
+            }
 
-            const selectedWord = currentSelection.map(idx => {
-                const row = Math.floor(idx / gridSize);
-                const col = idx % gridSize;
-                return wordGrid[row][col];
-            }).join('');
+            checkSelection();
+        }
 
-            if (words.includes(selectedWord) && !wordsFound.includes(selectedWord)) {
-                wordsFound.push(selectedWord);
-                alert(`¡Has encontrado la palabra "${selectedWord}"!`);
-                currentSelection.forEach(idx => {
-                    document.querySelector(`[data-index="${idx}"]`).classList.add('found');
-                });
-                document.querySelector(`[data-word="${selectedWord}"]`).classList.add('found');
+        function checkSelection() {
+            const selectedWord = currentSelection.map(pos => wordGrid[pos.row][pos.col]).join('');
+            const reversedWord = selectedWord.split('').reverse().join('');
+            const wordIndex = words.indexOf(selectedWord);
+            const reversedWordIndex = words.indexOf(reversedWord);
+
+            if (wordIndex !== -1 || reversedWordIndex !== -1) {
+                wordsFound.push(words[wordIndex !== -1 ? wordIndex : reversedWordIndex]);
+                currentSelection.forEach(pos => pos.element.classList.add('found'));
                 currentSelection = [];
+                updateWordsList();
+            }
+        }
 
-                if (wordsFound.length === words.length) {
-                    setTimeout(() => {
-                        document.getElementById('message').style.display = 'block';
-                        document.getElementById('message').scrollIntoView({ behavior: 'smooth' });
-                    }, 1000);
+        function updateWordsList() {
+            const listItems = document.querySelectorAll('#wordsList div');
+            listItems.forEach(item => {
+                if (wordsFound.includes(words[formulas.indexOf(item.textContent)])) {
+                    item.classList.add('found');
                 }
-            } else if (!words.some(word => word.startsWith(selectedWord))) {
-                currentSelection.forEach(idx => {
-                    document.querySelector(`[data-index="${idx}"]`).classList.remove('selected');
-                });
-                currentSelection = [];
+            });
+
+            if (wordsFound.length === words.length) {
+                document.getElementById('message').style.display = 'block';
             }
         }
 
         function checkFoundWords() {
-            const missingWords = words.filter(word => !wordsFound.includes(word));
-            alert(`Palabras encontradas: ${wordsFound.join(', ')}\nPalabras faltantes: ${missingWords.join(', ')}`);
+            alert(`Has encontrado ${wordsFound.length} de ${words.length} palabras.`);
         }
     </script>
 </body>
