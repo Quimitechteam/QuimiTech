@@ -150,72 +150,7 @@ img {
     font-size: 2rem;
 }
 
-.game-container {
-    background-color: #e6f0ff;
-    padding: 3rem;
-    border-radius: 12px;
-    text-align: center;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.game-container h2 {
-    color: #003366;
-    font-family: 'Croissant One', serif;
-    font-size: 3rem;
-}
-
-.timer {
-    font-size: 2rem;
-    margin: 2rem 0;
-    font-family: Arial, sans-serif;
-}
-
-.puzzle-container {
-    display: grid;
-    grid-template-columns: repeat(4, 120px);
-    gap: 4px;
-    justify-content: center;
-    margin: 2rem auto;
-    position: relative;
-    width: 480px;
-    height: 480px;
-    border: 2px solid #003366;
-}
-
-.puzzle-piece {
-    width: 120px;
-    height: 120px;
-    background-size: 480px 480px;
-    cursor: pointer;
-    position: absolute;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    z-index: 1;
-}
-
-.reference-image {
-    max-width: 100%;
-    height: auto;
-    border: 2px solid #003366;
-    margin-bottom: 2rem;
-}
-
-.game-container button {
-    background-color: #004080;
-    color: #fff;
-    border: none;
-    padding: 1.25rem 2.5rem;
-    font-size: 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 2rem;
-}
-
-.game-container button:hover {
-    background-color: #003366;
-}
+/* Sección del rompecabezas eliminada */
 
 @media (max-width: 768px) {
     .header-content {
@@ -240,25 +175,7 @@ img {
         font-size: 1rem;
     }
 
-    .game-container {
-        padding: 1.5rem;
-        max-width: 100%;
-    }
-
-    .game-container h2 {
-        font-size: 2rem;
-    }
-
-    .timer {
-        font-size: 1.5rem;
-    }
-
-    .reference-image {
-        max-width: 90%;
-    }
-
-    .game-container button {
-        font-size: 1rem;
-        padding: 1rem 2rem;
+    .container {
+        padding: 1.5rem 0;
     }
 }
