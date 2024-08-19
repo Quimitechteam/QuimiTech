@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código de Elementos - QuimiTech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+            font-size: 18px;
+        }
+
+        header {
+            background-color: #004080;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .logo {
+            max-height: 150px;
+            width: auto;
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Croissant One', serif;
+            font-weight: 400;
+            font-size: 4rem;
+        }
+
+        header p {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-size: 1.5rem;
+        }
+
+        nav {
+            background-color: #003366;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            display: inline-block;
+            font-size: 1.25rem;
+        }
+
+        nav a:hover {
+            background-color: #002244;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 3rem 0;
+            display: block;
+        }
+
+        .hero {
+            background-color: #cce0ff;
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            margin-top: 0;
+            color: #003366;
+            font-size: 2.5rem;
+        }
+
+        .section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .section h3 {
+            color: #004080;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .button {
+            background-color: #004080;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0.5rem;
+        }
+
+        .button:hover {
+            background-color: #003366;
+        }
+
+        /* Estilo para el área de entrada con la cerradura */
+        .lock-input-container {
+            display: flex;
+            align-items: center;
+            margin: 1rem auto;
+            width: 100%;
+            max-width: 600px; /* Ajusta el ancho máximo del contenedor */
+        }
+
+        .locker-overlay {
+            width: 100px; /* Ajusta el ancho de la imagen del candado */
+            height: 100px; /* Ajusta el alto de la imagen del candado */
+            background: url('candado.png') no-repeat center center;
+            background-size: contain; /* Asegúrate de que la imagen se ajuste */
+            flex-shrink: 0; /* Evita que la imagen se reduzca */
+        }
+
+        .lock-input {
+            border: none;
+            border-radius: 15px;
+            padding: 0.5rem;
+            flex: 1; /* Ocupa el espacio restante */
+            font-size: 1rem;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: #333;
+        }
+
+        .lock-input::placeholder {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="logon.png" alt="Logo de QuimiTech" class="logo">
+            <div class="header-text">
+                <h1>QuimiTech</h1>
+                <p>Tu recurso definitivo para aprender nomenclatura química</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="tutoriales.html">Tutoriales</a>
+        <a href="recursos.html">Recursos</a>
+        <a href="juegos.html">Juegos</a>
+        <a href="quimikids.html">QuimiKids</a>
+    </nav>
+
+    <section class="container">
+        <div class="hero">
+            <h2>Código de Elementos</h2>
+            <p>Resuelve las fórmulas químicas basadas en los nombres de los compuestos para desbloquear la cerradura final.</p>
+        </div>
+
+        <section class="section game-section">
+            <h3 id="compoundName">Nombre del Compuesto: Óxido de plata y calcio</h3>
+            <p>Ingresa la fórmula química correcta para el nombre del compuesto dado.</p>
+
+            <div class="lock-input-container">
+                <div class="locker-overlay"></div>
+                <input type="text" id="userInput" class="lock-input" placeholder="Ingresa la fórmula aquí" autocomplete="off">
+            </div>
+
+            <button type="button" class="button" onclick="checkAnswer()">Verificar</button>
+            <button type="button" class="button" onclick="showHint()">Pista</button>
+            <p id="resultMessage"></p>
+            <p id="hintMessage"></p>
+            <button type="button" id="nextLevelButton" class="button" style="display: none;" onclick="nextLevel()">Siguiente nivel</button>
+            <button type="button" id="finalUnlockButton" class="button" style="display: none;" onclick="showFinalUnlock()">Desbloquear Cerradura Final</button>
+        </section>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 QuimiTech. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const levels = [
+            { name: "Óxido de plata y calcio", formula: "AgO + Ca", hint: "El óxido de plata reacciona con calcio para formar hidróxido de plata y calcio." },
+            { name: "Cloruro de sodio", formula: "NaCl", hint: "Un compuesto muy común, conocido como sal de mesa." },
+            { name: "Agua", formula: "H2O", hint: "Es el compuesto esencial para la vida." },
+            { name: "Dióxido de carbono", formula: "CO2", hint: "Es un gas producido por la respiración y usado en la fotosíntesis." },
+            { name: "Bromuro de potasio", formula: "KBr", hint: "Un compuesto iónico formado por potasio y bromo." },
+            { name: "Óxido de magnesio", formula: "MgO", hint: "Óxido de magnesio, usado en diversos productos medicinales y de laboratorio." },
+            { name: "Sulfuro de hierro", formula: "FeS", hint: "Un sulfuro de hierro que se encuentra comúnmente en la naturaleza." },
+            { name: "Hidróxido de sodio", formula: "NaOH", hint: "También conocido como sosa cáustica." },
+            { name: "Nitrato de plata", formula: "AgNO3", hint: "Usado en fotografía y como reactivo químico." }
+        ];
+
+        let currentLevel = 0;
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("userInput").value.trim();
+            const correctAnswer = levels[currentLevel].formula;
+
+            if (userAnswer === correctAnswer) {
+                document.getElementById("resultMessage").textContent = "¡Correcto!";
+                document.getElementById("nextLevelButton").style.display = "inline-block";
+            } else {
+                document.getElementById("resultMessage").textContent = "Incorrecto, intenta de nuevo.";
+            }
+        }
+
+        function showHint() {
+            document.getElementById("hintMessage").textContent = "Pista: " + levels[currentLevel].hint;
+        }
+
+        function nextLevel() {
+            currentLevel++;
+            if (currentLevel < levels.length) {
+                document.getElementById("compoundName").textContent = "Nombre del Compuesto: " + levels[currentLevel].name;
+                document.getElementById("userInput").value = "";
+                document.getElementById("resultMessage").textContent = "";
+                document.getElementById("hintMessage").textContent = "";
+                document.getElementById("nextLevelButton").style.display = "none";
+            } else {
+                document.getElementById("compoundName").textContent = "¡Felicidades! Has completado todos los niveles.";
+                document.getElementById("userInput").style.display = "none";
+                document.getElementById("resultMessage").textContent = "";
+                document.getElementById("hintMessage").textContent = "";
+                document.getElementById("nextLevelButton").style.display = "none";
+                document.getElementById("finalUnlockButton").style.display = "inline-block";
+            }
+        }
+
+        function showFinalUnlock() {
+            alert("¡Has desbloqueado la cerradura final! ¡Excelente trabajo!");
+        }
+    </script>
+</body>
+    <br>
+    <br>
+    <br>
+</html>
