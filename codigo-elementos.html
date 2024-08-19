@@ -139,28 +139,27 @@
             background-color: #003366;
         }
 
-        /* Estilo para el área de entrada con la cerradura */
         .lock-input-container {
             display: flex;
             align-items: center;
             margin: 1rem auto;
             width: 100%;
-            max-width: 600px; /* Ajusta el ancho máximo del contenedor */
+            max-width: 600px;
         }
 
         .locker-overlay {
-            width: 100px; /* Ajusta el ancho de la imagen del candado */
-            height: 100px; /* Ajusta el alto de la imagen del candado */
+            width: 100px;
+            height: 100px;
             background: url('candado.png') no-repeat center center;
-            background-size: contain; /* Asegúrate de que la imagen se ajuste */
-            flex-shrink: 0; /* Evita que la imagen se reduzca */
+            background-size: contain;
+            flex-shrink: 0;
         }
 
         .lock-input {
             border: none;
             border-radius: 15px;
             padding: 0.5rem;
-            flex: 1; /* Ocupa el espacio restante */
+            flex: 1;
             font-size: 1rem;
             text-align: center;
             background-color: #fff;
@@ -170,6 +169,20 @@
 
         .lock-input::placeholder {
             color: #666;
+        }
+
+        .congratulations-message {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            display: none;
+        }
+
+        .congratulations-message img {
+            max-width: 150px;
+            height: auto;
+            display: block;
+            margin: 1rem auto;
         }
     </style>
 </head>
@@ -220,6 +233,11 @@
         <p>&copy; 2024 QuimiTech. Todos los derechos reservados.</p>
     </footer>
 
+    <div id="congratulationsMessage" class="congratulations-message">
+        ¡Felicidades! Has completado todos los niveles.
+        <img src="images/celebration.gif" alt="Felicidades">
+    </div>
+
     <script>
         const levels = [
             { name: "Óxido de plata y calcio", formula: "AgO + Ca", hint: "El óxido de plata reacciona con calcio para formar hidróxido de plata y calcio." },
@@ -265,7 +283,8 @@
                 document.getElementById("resultMessage").textContent = "";
                 document.getElementById("hintMessage").textContent = "";
                 document.getElementById("nextLevelButton").style.display = "none";
-                document.getElementById("finalUnlockButton").style.display = "inline-block";
+                document.getElementById("finalUnlockButton").style.display = "none";
+                document.getElementById("congratulationsMessage").style.display = "block";
             }
         }
 
@@ -274,7 +293,4 @@
         }
     </script>
 </body>
-    <br>
-    <br>
-    <br>
 </html>
