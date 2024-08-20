@@ -212,7 +212,7 @@
         </div>
 
         <section class="section game-section">
-            <h3 id="compoundName">Nombre del Compuesto: Óxido de plata y calcio</h3>
+           <h3 id="compoundName">Nombre del Compuesto: Permanganato de Potasio</h3>
             <p>Ingresa la fórmula química correcta para el nombre del compuesto dado.</p>
 
             <div class="lock-input-container">
@@ -234,18 +234,7 @@
     </footer>
 
     <div id="congratulationsMessage" class="congratulations-message">
-        ¡Felicidades! Has completado todos los niveles.
-        <img src="images/celebration.gif" alt="Felicidades">
-    </div>
-
-    <script>
-        const levels = [
-            { name: "Óxido de plata y calcio", formula: "AgO + Ca", hint: "El óxido de plata reacciona con calcio para formar hidróxido de plata y calcio." },
-            { name: "Cloruro de sodio", formula: "NaCl", hint: "Un compuesto muy común, conocido como sal de mesa." },
-            { name: "Agua", formula: "H2O", hint: "Es el compuesto esencial para la vida." },
-            { name: "Dióxido de carbono", formula: "CO2", hint: "Es un gas producido por la respiración y usado en la fotosíntesis." },
-            { name: "Bromuro de potasio", formula: "KBr", hint: "Un compuesto iónico formado por potasio y bromo." },
-            { name: "Óxido de magnesio", formula: "MgO", hint: "Óxido de magnesio, usado en diversos productos medicinales y de laboratorio." },
+       ¡Has desbloqueado la cerradura final! ¡Excelente trabajo!
             { name: "Sulfuro de hierro", formula: "FeS", hint: "Un sulfuro de hierro que se encuentra comúnmente en la naturaleza." },
             { name: "Hidróxido de sodio", formula: "NaOH", hint: "También conocido como sosa cáustica." },
             { name: "Nitrato de plata", formula: "AgNO3", hint: "Usado en fotografía y como reactivo químico." }
@@ -261,7 +250,21 @@
                 document.getElementById("resultMessage").textContent = "¡Correcto!";
                 document.getElementById("nextLevelButton").style.display = "inline-block";
             } else {
-                document.getElementById("resultMessage").textContent = "Incorrecto, intenta de nuevo.";
+                documen        <img src="images/celebration.gif" alt="Felicidades">
+    </div>
+
+    <script>
+        const levels = [
+            { name: "Permanganato de potasio", formula: "KMnO4", hint: "El permanganato de potasio reacciona con agua para formar el hidróxido de potasio y un compuesto que contiene manganeso." },            { name: "Cloruro de sodio", formula: "NaCl", hint: "Un compuesto muy común, conocido como sal de mesa." },
+            { name: "Agua", formula: "H2O", hint: "Es el compuesto esencial para la vida." },
+            { name: "Dióxido de carbono", formula: "CO2", hint: "Es un gas producido por la respiración y usado en la fotosíntesis." },
+            { name: "Bromuro de potasio", formula: "KBr", hint: "Un compuesto iónico formado por potasio y bromo." },
+            { name: "Óxido de magnesio", formula: "MgO", hint: "Óxido de magnesio, usado en diversos productos medicinales y de laboratorio." },
+            { name: "Sulfuro de hierro", formula: "FeS", hint: "Un sulfuro de hierro que se encuentra comúnmente en la naturaleza." },
+            { name: "Hidróxido de sodio", formula: "NaOH", hint: "También conocido como sosa cáustica." },
+            { name: "Nitrato de plata", formula: "AgNO3", hint: "Usado en fotografía y como reactivo químico." }
+        ];
+t.getElementById("resultMessage").textContent = "Incorrecto, intenta de nuevo.";
             }
         }
 
