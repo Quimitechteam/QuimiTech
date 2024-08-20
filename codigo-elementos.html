@@ -138,28 +138,27 @@
         .button:hover {
             background-color: #003366;
         }
-
         .lock-input-container {
             display: flex;
             align-items: center;
             margin: 1rem auto;
             width: 100%;
-            max-width: 600px;
+            max-width: 600px; 
         }
 
         .locker-overlay {
-            width: 100px;
-            height: 100px;
+            width: 100px; 
+            height: 100px; 
             background: url('candado.png') no-repeat center center;
             background-size: contain;
-            flex-shrink: 0;
+            flex-shrink: 0; 
         }
 
         .lock-input {
             border: none;
             border-radius: 15px;
             padding: 0.5rem;
-            flex: 1;
+            flex: 1; 
             font-size: 1rem;
             text-align: center;
             background-color: #fff;
@@ -175,11 +174,11 @@
             text-align: center;
             margin-top: 2rem;
             font-size: 1.5rem;
-            display: none;
+            display: none; 
         }
 
         .congratulations-message img {
-            max-width: 150px;
+            max-width: 170px;
             height: auto;
             display: block;
             margin: 1rem auto;
@@ -212,7 +211,7 @@
         </div>
 
         <section class="section game-section">
-           <h3 id="compoundName">Nombre del Compuesto: Permanganato de Potasio</h3>
+            <h3 id="compoundName">Nombre del Compuesto: Permanganato de Potasio</h3>
             <p>Ingresa la fórmula química correcta para el nombre del compuesto dado.</p>
 
             <div class="lock-input-container">
@@ -234,7 +233,18 @@
     </footer>
 
     <div id="congratulationsMessage" class="congratulations-message">
-       ¡Has desbloqueado la cerradura final! ¡Excelente trabajo!
+        ¡Has desbloqueado la cerradura final! ¡Excelente trabajo!
+        <img src="celebration.gif" alt="Felicidades">
+    </div>
+
+    <script>
+        const levels = [
+            { name: "Permanganato de potasio", formula: "KMnO4", hint: "El permanganato de potasio reacciona con agua para formar el hidróxido de potasio y un compuesto que contiene manganeso." },
+            { name: "Cloruro de sodio", formula: "NaCl", hint: "Un compuesto muy común, conocido como sal de mesa." },
+            { name: "Agua", formula: "H2O", hint: "Es el compuesto esencial para la vida." },
+            { name: "Dióxido de carbono", formula: "CO2", hint: "Es un gas producido por la respiración y usado en la fotosíntesis." },
+            { name: "Bromuro de potasio", formula: "KBr", hint: "Un compuesto iónico formado por potasio y bromo." },
+            { name: "Óxido de magnesio", formula: "MgO", hint: "Óxido de magnesio, usado en diversos productos medicinales y de laboratorio." },
             { name: "Sulfuro de hierro", formula: "FeS", hint: "Un sulfuro de hierro que se encuentra comúnmente en la naturaleza." },
             { name: "Hidróxido de sodio", formula: "NaOH", hint: "También conocido como sosa cáustica." },
             { name: "Nitrato de plata", formula: "AgNO3", hint: "Usado en fotografía y como reactivo químico." }
@@ -250,21 +260,7 @@
                 document.getElementById("resultMessage").textContent = "¡Correcto!";
                 document.getElementById("nextLevelButton").style.display = "inline-block";
             } else {
-                documen        <img src="images/celebration.gif" alt="Felicidades">
-    </div>
-
-    <script>
-        const levels = [
-            { name: "Permanganato de potasio", formula: "KMnO4", hint: "El permanganato de potasio reacciona con agua para formar el hidróxido de potasio y un compuesto que contiene manganeso." },            { name: "Cloruro de sodio", formula: "NaCl", hint: "Un compuesto muy común, conocido como sal de mesa." },
-            { name: "Agua", formula: "H2O", hint: "Es el compuesto esencial para la vida." },
-            { name: "Dióxido de carbono", formula: "CO2", hint: "Es un gas producido por la respiración y usado en la fotosíntesis." },
-            { name: "Bromuro de potasio", formula: "KBr", hint: "Un compuesto iónico formado por potasio y bromo." },
-            { name: "Óxido de magnesio", formula: "MgO", hint: "Óxido de magnesio, usado en diversos productos medicinales y de laboratorio." },
-            { name: "Sulfuro de hierro", formula: "FeS", hint: "Un sulfuro de hierro que se encuentra comúnmente en la naturaleza." },
-            { name: "Hidróxido de sodio", formula: "NaOH", hint: "También conocido como sosa cáustica." },
-            { name: "Nitrato de plata", formula: "AgNO3", hint: "Usado en fotografía y como reactivo químico." }
-        ];
-t.getElementById("resultMessage").textContent = "Incorrecto, intenta de nuevo.";
+                document.getElementById("resultMessage").textContent = "Incorrecto, intenta de nuevo.";
             }
         }
 
@@ -295,7 +291,11 @@ t.getElementById("resultMessage").textContent = "Incorrecto, intenta de nuevo.";
             alert("¡Has desbloqueado la cerradura final! ¡Excelente trabajo!");
         }
     </script>
+    <br>
+     <br>
+     <br>
 </body>
-<br>
-<br>
+    <br>
+     <br>
+     <br>
 </html>
